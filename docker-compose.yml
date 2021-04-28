@@ -1,0 +1,16 @@
+version: "3.8"
+
+services:
+  web:
+    container_name: experiment-flask
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "5000:5000"
+    environment:
+      FLASK_ENV: development
+      FLASK_APP: src/main.py
+    volumes:
+      - .:/app
+    command: /bin/sh -c "flask run --host=0.0.0.0 --port=5000"
